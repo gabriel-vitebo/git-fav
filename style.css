@@ -16,11 +16,13 @@
   --bg-card-even: hsla(192, 65%, 7%, 1);
   --tt-input: #7C7C8A;
   --tt-main: #E1E1E6;
+  --tt-empaty: #4E5455;
   --tt-button-remove: #F75A68;
   --bg-th-colum: #092D38;
   --bg-tb-row: #06181C;
   --border-color: #4A808C;
   --white: #ffffff;
+  --empty-font: 'Roboto Mono', monospace;
   --main-font: 'Roboto', sans-serif;
 }
 
@@ -51,6 +53,31 @@ body {
   max-width: 112rem;
   margin: 0 auto;
   padding:  2rem;
+}
+
+.noFavorites {
+  display: flex;
+  margin: 21rem 0;
+  align-items: center;
+  justify-content: center;
+  gap: 6rem;
+  border: 1px solid var(--border-color);
+  height: 68.8rem;
+  margin: 0;
+  padding: 0;
+  border-top: none;
+  border-radius: 0 0 1.2rem 1.2rem;
+}
+
+.hide {
+  display: none;
+}
+
+.noFavorites h2 {
+  font-size: 4rem;
+  color: var(--tt-empaty);
+  font-family: var(--empty-font);
+  line-height: 2.5rem;
 }
 
 header {
@@ -94,10 +121,9 @@ header {
 table {
   width: 100%;
   border-collapse: collapse;
-  border: 1px solid var(--border-color);
   align-items: left;
   border-radius: 1.2rem;
-  
+  border: 1px solid var(--border-color);
 }
 
 table * {
@@ -106,27 +132,28 @@ table * {
   color: var(--tt-main);
 }
 
+/* table tr:last-child {
+  border-radius: 0 0 1.2rem 1.2rem;
+} */
+
+
 table th {
   background-color: var(--bg-th-colum);
   padding: 1.6rem 4rem;
   text-align: left;
 }
 
-/* tr th:nth-child(1) {
-  border-radius: 1.2rem 0 0;
-}
-
-tr th:nth-child(4) {
-  border-radius: 0 1.2rem 0 0;
+/* thead tr {
+  border: 1px solid var(--border-color);
+  border-bottom: none;
+  border-radius: 1.2rem 1.2rem;
 } */
 
-table tr {
-  background-color: var(--bg-card);
-}
 
 table tr:nth-child(even) {
   background-color: var(--bg-card-even);
-  border: 1px solid var(--border-color);
+  /* border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color); */
 }
 
 table td {
@@ -138,9 +165,8 @@ td.user {
   display: flex;
   align-items: center;
   gap: 1.6rem;
+  /* border-left: 1px solid var(--border-color); */
 }
-
-
 
 td.user img {
   width: 5.6rem;
@@ -162,11 +188,17 @@ td.user a span {
   font-weight: 400;
 }
 
+tbody  tr td:last-child {
+  /* border-right: 1px solid var(--border-color); */
+  /* border-radius: 0 0 1.2rem 1.2rem; */
+}
+
 .remove {
   border: none;
   background: none;
   color: var(--tt-button-remove);
   cursor: pointer;
+  
 }
 
 
