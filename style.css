@@ -151,6 +151,7 @@ td.user img {
 
 td.user a {
   text-decoration: none;
+  cursor: pointer;
 }
 
 td.user a p {
@@ -165,6 +166,7 @@ td.user a span {
   border: none;
   background: none;
   color: var(--tt-button-remove);
+  cursor: pointer;
 }
 
 
