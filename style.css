@@ -11,7 +11,9 @@
   --bg-input: #06181C;
   --bg-input-holder: #ffffff;
   --bg-button-favorite: #065E7C;
+  --bg-card: hsla(195, 61%, 6%, 0.5);
   --scroll: #4A808C;
+  --bg-card-even: hsla(192, 65%, 7%, 1);
   --tt-input: #7C7C8A;
   --tt-main: #E1E1E6;
   --tt-button-remove: #F75A68;
@@ -55,7 +57,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 11.5rem 0;
+  margin: 11.5rem 0 8.7rem 0;
 }
 
 .header input {
@@ -89,10 +91,81 @@ header {
 }
 
 
-#app > img {
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--border-color);
+  align-items: left;
+  border-radius: 1.2rem;
+  
+}
+
+table * {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--tt-main);
+}
+
+table th {
+  background-color: var(--bg-th-colum);
+  padding: 1.6rem 4rem;
+  text-align: left;
+}
+
+/* tr th:nth-child(1) {
+  border-radius: 1.2rem 0 0;
+}
+
+tr th:nth-child(4) {
+  border-radius: 0 1.2rem 0 0;
+} */
+
+table tr {
+  background-color: var(--bg-card);
+}
+
+table tr:nth-child(even) {
+  background-color: var(--bg-card-even);
+  border: 1px solid var(--border-color);
+}
+
+table td {
+  padding: 2.4rem 4rem;
+  text-align: left;
+}
+
+td.user {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+
+
+td.user img {
   width: 5.6rem;
   height: 5.6rem;
   border-radius: 50%;
   object-fit: cover;
 }
+
+td.user a {
+  text-decoration: none;
+}
+
+td.user a p {
+  margin-bottom: .8rem;
+}
+
+td.user a span {
+  font-weight: 400;
+}
+
+.remove {
+  border: none;
+  background: none;
+  color: var(--tt-button-remove);
+}
+
+
 
