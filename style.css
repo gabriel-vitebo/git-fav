@@ -125,7 +125,7 @@ table {
   overflow-y: scroll;
   display: inline-block;
   border: 2px solid var(--border-color);
-  height: 68rem;
+  height: auto;
 }
 
 table::-webkit-scrollbar {
