@@ -1,30 +1,26 @@
+// classe que vai conter a lógica dos dados
+// comos os dados serão estruturados
 export class Favorites {
   constructor(root) {
     this.root = document.querySelector(root)
     this.load()
   }
+
   load() {
-    this.entries = [
-      {
-        login: "gabriel-vitebo",
-        name: "Gabriel Vitebo",
-        public_repos: "18",
-        followers: "25",
-      },
-      {
-        login: "vitebo",
-        name: "André Alves Vitebo",
-        public_repos: "60",
-        followers: "100",
-      },
-    ]
+    this.entries = JSON.parse(localStorage.getItem("@github-favorites:")) ||
+      document.querySelector(".noFavorites").classList.remove("hide")
+
+    this.entries = []
   }
 
   delete(user) {
     const filteredEntries = this.entries
       .filter(entry => entry.login !== user.login)
+    this.entries = filteredEntries
+    this.update()
   }
 }
+//classe que vai criar a visualização e eventos do HTML
 
 export class FavoritesView extends Favorites {
   constructor(root) {
@@ -38,21 +34,22 @@ export class FavoritesView extends Favorites {
   update() {
     this.removeAllTr()
 
+    
+
     this.entries.forEach( user => {
       const row = this.createRow()
       row.querySelector('.user img').src = `https://github.com/${user.login}.png`
-      row.querySelector('.user img').alt = `Foto de perfil de ${user.name}`
-      row.querySelector('.user p').textContent = `${user.name}`
-      row.querySelector('.user span').textContent = `/${user.login}`
+      row.querySelector('.user img').alt = `imagem de ${user.name}`
+      row.querySelector('.user p').textContent = user.name
+      row.querySelector('.user span').textContent = user.login
       row.querySelector(".repositories").textContent = user.public_repos
       row.querySelector(".followers").textContent = user.followers
 
       row.querySelector('.remove').onclick = () => {
-        const isOk = confirm('Deseja remover da sua lista de favoritos?')
+        const isOk = confirm('tem certeza que deseja deletar?')
         if(isOk) {
           this.delete(user)
         }
-
       }
 
       this.tbody.append(row)
@@ -60,14 +57,14 @@ export class FavoritesView extends Favorites {
   }
 
   createRow() {
-    const tr =  document.createElement('tr')
+    const tr = document.createElement('tr')
 
     tr.innerHTML = `
       <td class="user">
-        <img src="https://github.com/gabriel-vitebo.png" alt="Foto de perfil de Gabriel Vitebo">
+          <img src="https://github.com/gabriel-vitebo.png" alt="Foto de perfil de Gabriel Vitebo">
         <a href="https://github.com/gabriel-vitebo" target="_blank">
           <p>Gabriel Vitebo</p>
-          <span>/gabriel-vitebo</span>
+          <span>gabriel-vitebo</span>
         </a>
       </td>
       <td class="repositories">18</td>
@@ -81,6 +78,8 @@ export class FavoritesView extends Favorites {
   }
 
   removeAllTr() {
+    
+
     this.tbody.querySelectorAll("tr").forEach((tr) => {
       tr.remove()
     })
