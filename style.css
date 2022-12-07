@@ -51,6 +51,7 @@ body {
 
 #app {
   max-width: 112rem;
+  min-width: 93.7rem;
   margin: 0 auto;
   padding:  2rem;
 }
@@ -62,7 +63,7 @@ body {
   justify-content: center;
   gap: 6rem;
   border: 1px solid var(--border-color);
-  height: 68.8rem;
+  height: 50rem;
   margin: 0;
   padding: 0;
   border-top: none;
@@ -87,8 +88,16 @@ header {
   margin: 11.5rem 0 8.7rem 0;
 }
 
+header img {
+  margin-right: 5rem;
+}
+
+header button {
+  cursor: pointer;
+}
+
 .header input {
-  width: 46rem;
+  width: clamp(20rem,46rem,50rem);
   font-size: 1.6rem;
   font-weight: 400;
   padding: 1.6rem;
@@ -122,26 +131,9 @@ table {
   border-collapse: collapse;
   align-items: left;
   border-radius: 1.2rem;
-  overflow-y: scroll;
   display: inline-block;
   border: 2px solid var(--border-color);
   height: auto;
-}
-
-table::-webkit-scrollbar {
-  width: .6rem;
-  z-index: 1;
-  left: 8;
-}
-
-table::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-table::-webkit-scrollbar-thumb {
-  background-color: var(--scroll);
-  border-radius: 1rem;
-  
 }
 
 table * {
@@ -173,7 +165,6 @@ td.user {
   display: flex;
   align-items: center;
   gap: 1.6rem;
-  /* border-left: 1px solid var(--border-color); */
 }
 
 td.user img {
@@ -201,5 +192,4 @@ td.user a span {
   background: none;
   color: var(--tt-button-remove);
   cursor: pointer;
-  
 }
