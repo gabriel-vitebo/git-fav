@@ -10,9 +10,7 @@ export class Favorites {
 
   load() {
     this.entries =
-      JSON.parse(localStorage.getItem("@github-favorites:")) || noFavoritesAdded
-      
-  const noFavoritesAdded = document.querySelector(".noFavorites").classList.remove("hide")
+      JSON.parse(localStorage.getItem("@github-favorites:")) || []
   }
 
   save() {
@@ -35,6 +33,7 @@ export class Favorites {
       }
 
       this.entries = [user, ...this.entries]
+
       this.update()
       this.save()
 
@@ -75,7 +74,10 @@ export class FavoritesView extends Favorites {
   update() {
     this.removeAllTr()
 
-    
+    if (this.entries.length === 0) {
+      document.querySelector(".noFavorites").classList.remove("hide")
+    } else document.querySelector(".noFavorites").classList.add("hide")
+
 
     this.entries.forEach( user => {
       const row = this.createRow()
